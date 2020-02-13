@@ -1,9 +1,9 @@
 <?php
 
-namespace SimpleUserManager;
+namespace TinyUserManager;
 
 use Exception;
-use SimpleUserManager\Helpers\Database;
+use TinyUserManager\Helpers\Database;
 
 class Setup {
 

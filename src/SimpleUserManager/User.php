@@ -1,6 +1,6 @@
 <?php
 
-namespace SimpleUserManager;
+namespace TinyUserManager;
 
 use DateTime;
 

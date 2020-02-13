@@ -1,11 +1,11 @@
 <?php
 
-namespace SimpleUserManager;
+namespace TinyUserManager;
 
 use Exception;
 use PHPMailer\PHPMailer\PHPMailer;
-use SimpleUserManager\Configs\EmailConfig;
-use SimpleUserManager\Helpers\Database;
+use TinyUserManager\Configs\EmailConfig;
+use TinyUserManager\Helpers\Database;
 
 class PasswordResetHandler {
 

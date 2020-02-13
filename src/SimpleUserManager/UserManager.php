@@ -1,10 +1,10 @@
 <?php
 
-namespace SimpleUserManager;
+namespace TinyUserManager;
 
 use DateTime;
 use Exception;
-use SimpleUserManager\Helpers\Database;
+use TinyUserManager\Helpers\Database;
 
 class UserManager {
 

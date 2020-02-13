@@ -1,5 +1,5 @@
 {
-    "name": "drpdev/tinyusermanager",
+    "name": "tinyapps/tinyusermanager",
     "description": "Easy-to-use PHP-library for user management",
     "type": "library",
     "require": {
@@ -9,14 +9,14 @@
     },
 	"autoload": {
 		"psr-4": {
-			"SimpleUserManager\\": "src/SimpleUserManager/"
+			"TinyUserManager\\": "src/TinyUserManager/"
 		}
 	},
     "license": "GNU Lesser General Public License v3.0",
     "authors": [
         {
             "name": "Dion Purushotham",
-            "email": "mail@drpdev.de"
+            "email": "mail@dion.codes"
         }
     ]
 }

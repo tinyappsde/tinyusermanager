@@ -1,6 +1,6 @@
 <?php
 
-namespace SimpleUserManager\Configs;
+namespace TinyUserManager\Configs;
 
 class EmailConfig {
 
