@@ -10,7 +10,7 @@ class Session {
 	/**
 	 * User that is logged in
 	 *
-	 * @var User
+	 * @var User|null
 	 */
 	private ?User $user = null;
 
@@ -25,6 +25,7 @@ class Session {
 	 *
 	 * @param string $email
 	 * @param string $password
+	 * @param bool $confirmedOnly
 	 * @return boolean
 	 */
 	public function login(string $email, string $password, bool $confirmedOnly = false): bool {
@@ -49,9 +50,9 @@ class Session {
 	/**
 	 * Get user that is logged in
 	 *
-	 * @return  User
+	 * @return  User|null
 	 */
-	public function getUser(): User {
+	public function getUser(): ?User {
 		return $this->user;
 	}
 
