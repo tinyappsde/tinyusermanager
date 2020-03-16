@@ -35,7 +35,7 @@ class Setup {
 			throw new Exception('no_db_connection');
 		}
 
-		$stmt = $db->prepare(file_get_contents(__DIR__ . '/sql/sum_users.sql'));
+		$stmt = $db->prepare(file_get_contents(__DIR__ . '/sql/tiny_users.sql'));
 		return $stmt && $stmt->execute();
 	}
 
@@ -49,7 +49,7 @@ class Setup {
 			throw new Exception('no_db_connection');
 		}
 
-		$stmt = $db->prepare(file_get_contents(__DIR__ . '/sql/sum_confirmation_tokens.sql'));
+		$stmt = $db->prepare(file_get_contents(__DIR__ . '/sql/tiny_confirmation_tokens.sql'));
 		return $stmt && $stmt->execute();
 	}
 
@@ -63,7 +63,7 @@ class Setup {
 			throw new Exception('no_db_connection');
 		}
 
-		$stmt = $db->prepare(file_get_contents(__DIR__ . '/sql/sum_password_forgot_tokens.sql'));
+		$stmt = $db->prepare(file_get_contents(__DIR__ . '/sql/tiny_password_forgot_tokens.sql'));
 		return $stmt && $stmt->execute();
 	}
 }

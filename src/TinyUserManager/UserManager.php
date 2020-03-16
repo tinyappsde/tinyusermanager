@@ -20,7 +20,7 @@ class UserManager {
 			throw new Exception('no_db_connection');
 		}
 
-		$stmt = $db->prepare('SELECT * FROM `sum_users` WHERE `email`=:email');
+		$stmt = $db->prepare('SELECT * FROM `tiny_users` WHERE `email`=:email');
 		$stmt->execute([':email' => $email]);
 
 		if ($result = $stmt->fetchObject()) {
@@ -41,7 +41,7 @@ class UserManager {
 			throw new Exception('no_db_connection');
 		}
 
-		$stmt = $db->prepare('SELECT * FROM `sum_users` WHERE `id`=:id');
+		$stmt = $db->prepare('SELECT * FROM `tiny_users` WHERE `id`=:id');
 		$stmt->execute([':id' => $id]);
 
 		if ($result = $stmt->fetchObject()) {
@@ -76,7 +76,7 @@ class UserManager {
 			$values[':' . $key] = $value;
 		}
 
-		if ($stmt = $db->prepare('UPDATE `sum_users` SET `email`=:email' . $computedSetPreparation . ' WHERE `id`=:id')) {
+		if ($stmt = $db->prepare('UPDATE `tiny_users` SET `email`=:email' . $computedSetPreparation . ' WHERE `id`=:id')) {
 			return $stmt->execute($values);
 		}
 
@@ -112,7 +112,7 @@ class UserManager {
 				$fieldsQueryPart .= ', confirmed=true';
 			}
 
-			if (!$stmt = $db->prepare('INSERT INTO `sum_users` SET `email`=:email, `password`=:password' . $fieldsQueryPart)) {
+			if (!$stmt = $db->prepare('INSERT INTO `tiny_users` SET `email`=:email, `password`=:password' . $fieldsQueryPart)) {
 				throw new Exception('db_error');
 			}
 

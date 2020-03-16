@@ -1,4 +1,4 @@
-CREATE TABLE `sum_password_forgot_tokens` (
+CREATE TABLE `tiny_confirmation_tokens` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
   `token` varchar(64) NOT NULL DEFAULT '',

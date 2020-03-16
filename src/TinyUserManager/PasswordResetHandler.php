@@ -35,7 +35,7 @@ class PasswordResetHandler {
 
 		$db->beginTransaction();
 
-		$stmt = $db->prepare('INSERT INTO `sum_password_forgot_tokens` SET `user_id`=:id, `token`=:token ON DUPLICATE KEY UPDATE `token`=:tokenupdate');
+		$stmt = $db->prepare('INSERT INTO `tiny_password_forgot_tokens` SET `user_id`=:id, `token`=:token ON DUPLICATE KEY UPDATE `token`=:tokenupdate');
 		$stmt->execute([':id' => $user->getId(), ':token' => $tokenHash, ':tokenupdate' => $tokenHash]);
 
 		if ($stmt->rowCount() === 1) {
@@ -93,7 +93,7 @@ class PasswordResetHandler {
 			throw new Exception('no_db_connection');
 		}
 
-		$stmt = $db->prepare('SELECT * FROM `sum_password_forgot_tokens` WHERE `user_id`=:id');
+		$stmt = $db->prepare('SELECT * FROM `tiny_password_forgot_tokens` WHERE `user_id`=:id');
 		$stmt->execute([':id' => $user->getId()]);
 
 		if ($result = $stmt->fetchObject()) {
@@ -120,9 +120,9 @@ class PasswordResetHandler {
 
 		$passwordHash = password_hash($newPassword, PASSWORD_BCRYPT, ['cost' => 12]);
 
-		$stmt = $db->prepare('UPDATE `sum_users` SET `password`=:password WHERE `id`=:id');
+		$stmt = $db->prepare('UPDATE `tiny_users` SET `password`=:password WHERE `id`=:id');
 		if ($stmt->execute([':id' => $user->getId(), ':password' => $passwordHash])) {
-			$stmt2 = $db->prepare('DELETE FROM `sum_password_forgot_tokens` WHERE `id`=:id');
+			$stmt2 = $db->prepare('DELETE FROM `tiny_password_forgot_tokens` WHERE `id`=:id');
 			if ($stmt->rowCount() !== 1) {
 				throw new Exception('error_updating_user');
 			}

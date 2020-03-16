@@ -35,7 +35,7 @@ class ConfirmationHandler {
 
 		$db->beginTransaction();
 
-		$stmt = $db->prepare('INSERT INTO `sum_confirmation_tokens` SET `user_id`=:id, `token`=:token ON DUPLICATE KEY UPDATE `token`=:tokenupdate');
+		$stmt = $db->prepare('INSERT INTO `tiny_confirmation_tokens` SET `user_id`=:id, `token`=:token ON DUPLICATE KEY UPDATE `token`=:tokenupdate');
 		$stmt->execute([':id' => $user->getId(), ':token' => $tokenHash, ':tokenupdate' => $tokenHash]);
 
 		if ($stmt->rowCount() === 1) {
@@ -94,14 +94,14 @@ class ConfirmationHandler {
 			throw new Exception('no_db_connection');
 		}
 
-		$stmt = $db->prepare('SELECT * FROM `sum_confirmation_tokens` WHERE `user_id`=:id');
+		$stmt = $db->prepare('SELECT * FROM `tiny_confirmation_tokens` WHERE `user_id`=:id');
 		$stmt->execute([':id' => $user->getId()]);
 
 		if ($result = $stmt->fetchObject()) {
 			if (password_verify($token, $result->token)) {
-				$stmt2 = $db->prepare('UPDATE `sum_users` SET `confirmed`=true WHERE `id`=:id');
+				$stmt2 = $db->prepare('UPDATE `tiny_users` SET `confirmed`=true WHERE `id`=:id');
 				$stmt2->execute([':id' => $user->getId()]);
-				$stmt3 = $db->prepare('DELETE FROM `sum_confirmation_tokens` WHERE `user_id`=:id');
+				$stmt3 = $db->prepare('DELETE FROM `tiny_confirmation_tokens` WHERE `user_id`=:id');
 				$stmt3->execute([':id' => $user->getId()]);
 
 				if ($stmt2->rowCount() === 1) {

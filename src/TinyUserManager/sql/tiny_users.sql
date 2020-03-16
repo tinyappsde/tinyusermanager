@@ -1,4 +1,4 @@
-CREATE TABLE `sum_users` (
+CREATE TABLE `tiny_users` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
