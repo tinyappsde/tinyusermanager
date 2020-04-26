@@ -15,8 +15,8 @@ class Session {
 	private ?User $user = null;
 
 	public function __construct() {
-		if (!empty($_SESSION['SUM_user_id'])) {
-			$this->user = UserManager::getUser($_SESSION['SUM_user_id']);
+		if (!empty($_SESSION['tiny_user_id'])) {
+			$this->user = UserManager::getUser($_SESSION['tiny_user_id']);
 		}
 	}
 
@@ -29,22 +29,29 @@ class Session {
 	 * @return boolean
 	 */
 	public function login(string $email, string $password, bool $confirmedOnly = false): bool {
-		if (!$db = Database::getPDO()) {
-			throw new Exception('no_db_connection');
-		}
-
 		if ($user = UserManager::findUser($email)) {
 			if (password_verify($password, $user->getPasswordHash())) {
 				if ($confirmedOnly && !$user->isEmailConfirmed()) {
 					return false;
 				}
 				$this->user = $user;
-				$_SESSION['SUM_user_id'] = $user->getId();
+				$_SESSION['tiny_user_id'] = $user->getId();
 				return true;
 			}
 		}
 
 		return false;
+	}
+
+	/**
+	 * Destroy the user's session
+	 *
+	 * @return void
+	 */
+	public function logout() {
+		$_SESSION['tiny_user_id'] = null;
+		session_unset();
+		session_destroy();
 	}
 
 	/**
