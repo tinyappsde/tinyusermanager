@@ -1,4 +1,4 @@
-CREATE TABLE `tiny_confirmation_tokens` (
+CREATE TABLE `__PREFIX__confirmation_tokens` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
   `token` varchar(64) NOT NULL DEFAULT '',
