@@ -173,7 +173,6 @@ class User {
 	 * Get a specific field by its key
 	 *
 	 * @param string $name
-	 * @return void
 	 */
 	public function getField(string $name) {
 		return $this->fields->$name ?? null;
