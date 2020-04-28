@@ -38,7 +38,7 @@ class PasswordResetHandler {
 		$stmt = $db->prepare('INSERT INTO `' . Database::getPrefix() . 'password_forgot_tokens` SET `user_id`=:id, `token`=:token ON DUPLICATE KEY UPDATE `token`=:tokenupdate');
 		$stmt->execute([':id' => $user->getId(), ':token' => $tokenHash, ':tokenupdate' => $tokenHash]);
 
-		if ($stmt->rowCount() === 1) {
+		if ($stmt->rowCount() >= 1) {
 			$mail = new PHPMailer();
 
 			$mail->CharSet = $emailConfig->getCharset();
