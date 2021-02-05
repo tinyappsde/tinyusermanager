@@ -5,7 +5,7 @@
 	"version": "1.0.1",
     "require": {
         "php": ">=7.4",
-        "ext-pdo_mysql": "^7.4",
+        "ext-pdo_mysql": ">=7.4",
         "phpmailer/phpmailer": "^6.1"
     },
 	"autoload": {
