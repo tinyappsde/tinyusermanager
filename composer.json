@@ -2,18 +2,17 @@
     "name": "tinyapps/tinyusermanager",
     "description": "Easy-to-use PHP-library for user management",
     "type": "library",
-	"version": "1.0.1",
     "require": {
-        "php": ">=7.4",
+        "php": "^7.4 || ^8.0",
         "ext-pdo_mysql": ">=7.4",
-        "phpmailer/phpmailer": "^6.1"
+        "phpmailer/phpmailer": "^6.5"
     },
 	"autoload": {
 		"psr-4": {
 			"TinyUserManager\\": "src/TinyUserManager/"
 		}
 	},
-    "license": "LGPL-3.0-only",
+    "license": "MIT",
     "authors": [
         {
             "name": "Dion Purushotham",
